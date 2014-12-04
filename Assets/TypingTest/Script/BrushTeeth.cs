@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class EggPan : MonoBehaviour {
-	public RawImage Pan;
-	public RawImage Egg;
+public class BrushTeeth : MonoBehaviour {
+	public RawImage Brush;
 	public GameObject KeyHitText;
 	public GameObject SequenceText;
 	public GameObject CompletedText;
 	public GameObject InsultText;
-	public AnimationClip flip;
-	Animator EggA;
-	string sequence = "+1-1+1";
+	public GameObject BrushAlias;
+	string sequence = ")1(1)1(1)1(1)1(1)1(1)1(1";
 	
 	string slot1;
 	string slot2;
@@ -38,7 +36,6 @@ public class EggPan : MonoBehaviour {
 		CurrentKeyLocked = "";
 		CompletedText.GetComponent<Text>().text = "";
 		InsultText.GetComponent<Text>().text="";
-		EggA = this.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -139,16 +136,16 @@ public class EggPan : MonoBehaviour {
 			string RepeatCountString = RepeatCount.ToString ();
 			
 			if ((LastHitKey == slot1) && (RepeatCountString == slot2)) {
-			
+				float duude = Random.Range(120,150);
+				float dude=((duude) *-1);
 				//
 				//Debug.Log ("Typed successfully");
-				if(slot1=="+"){ //Move pan up when appropriate
-					Pan.transform.position=Pan.transform.position + new Vector3(0,30,0);
-					Egg.transform.position=Egg.transform.position + new Vector3(0,23,0);
+				if(slot1=="("){ //Move brush left when appropriate
+
+					BrushAlias.transform.position=BrushAlias.transform.position + new Vector3(dude,0,0);
 				}
-				if(slot1=="-"){
-					Pan.transform.position=Pan.transform.position + new Vector3(0,-30,0);
-					Egg.transform.position=Egg.transform.position + new Vector3(0,-15,0);
+				if(slot1==")"){ //Move brush right when appropriate
+					BrushAlias.transform.position=BrushAlias.transform.position + new Vector3(duude,0,0);
 				}
 				InputSequence = InputSequence.Remove (0, 2);
 				SequenceEdited=true;
@@ -158,7 +155,7 @@ public class EggPan : MonoBehaviour {
 			//Debug.Log (InputSequence);
 		}
 		if ((CurrentKeyLocked != slot1)&&(CurrentKeyLocked!="")&&!SequenceEdited) { //If you mismatched, and you are hitting something, and the sequence isn't about to change
-		//	Debug.Log ("CurrentKeyLocked = " + CurrentKeyLocked + "slot1=" +slot1);			
+			//	Debug.Log ("CurrentKeyLocked = " + CurrentKeyLocked + "slot1=" +slot1);			
 			Debug.Log ("Wrong key hit.");
 			TimesErrored++;
 		}
@@ -171,29 +168,25 @@ public class EggPan : MonoBehaviour {
 		SequenceEdited = false;
 		if (Done) {
 			Debug.Log ("Safe to exit Scene.");
-				}
+		}
 	}
 	
 	void TaskSwitcher(int TasksDone){
 		CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
 		if (TasksDone == 1) {
 			sequence = "";
-		
+			
 		}
 		if (TasksDone == 2) {
 			sequence = " 1";
-
-
+			
+			
 		}
 		if (TasksDone == 3) {
-			Debug.Log("Flipped egg!");
-			Egg.animation.Play("Flip");
 			sequence="+1-1+1-1";
-			Done=true;
 		}
 		if (TasksDone == 4) {
 			Done = true;
-			Debug.Log ("TaskSwitcher() has decided you are done.");
 		}
 		
 	}
