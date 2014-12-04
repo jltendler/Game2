@@ -6,7 +6,7 @@ public class Typing : MonoBehaviour {
 	public GameObject SequenceText;
 	public GameObject CompletedText;
 	public GameObject InsultText;
-	string sequence = "a1b2c3d4";
+	string sequence = "a1 3";
 
 	string slot1;
 	string slot2;
@@ -39,11 +39,28 @@ public class Typing : MonoBehaviour {
 		DontDestroyOnLoad (this);
 	}
 	// Update is called once per frame
-	void Update () 
-		{
 
-		if (Input.inputString != "") {
+	void Update () 
+	{bool skippy = false;
+		if(Input.GetButtonDown("LeftArrowAlias")){
+			CurrentKeyLocked="(";
+			skippy=true;
+		}
+		if(Input.GetButtonDown("RightArrowAlias")){
+			CurrentKeyLocked=")";
+			skippy=true;
+		}
+		if(Input.GetButtonDown("UpArrowAlias")){
+			CurrentKeyLocked="+";
+			skippy=true;
+		}
+		if(Input.GetButtonDown("DownArrowAlias")){
+			CurrentKeyLocked="-";
+			skippy=true;
+		}
+		if (Input.inputString != ""&&(!skippy)) {
 						CurrentKeyLocked = Input.inputString; //Set Current Key Locked. Will not set "nothing being hit"
+			Debug.Log(Input.inputString);
 				}
 
 
@@ -57,6 +74,12 @@ public class Typing : MonoBehaviour {
 			CurrentKey="(";}
 		if (Input.GetKeyDown (KeyCode.RightArrow)) {
 			CurrentKey=")";}
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			CurrentKey = "+";
+		}
+		if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			CurrentKey = "-";
+		}
 		//End work arounds
 
 						if ((CurrentKey != LastHitKey) && (CurrentKey != "")) { //If a new key has been pressed. And a button is in fact being pressed
@@ -89,11 +112,15 @@ public class Typing : MonoBehaviour {
 	void ToEnglish(string slot1){ //Let's us make a pretty name for the hacky ( ) we use for left and right arrow
 		if (slot1 == "(") {
 						prettyname = "Left Arrow";
-				} 
-		else if(slot1 ==")"){
-			prettyname = "Right Arrow";
-		}
-		else {
+				} else if (slot1 == ")") {
+						prettyname = "Right Arrow";
+				} else if (slot1 == "+") {
+						prettyname = "Up Arrow";
+				} else if (slot1 == "-") {
+						prettyname = "Down Arrow";
+				} else if (slot1 == " ") {
+				prettyname = "Spacebar";
+			} else {
 					prettyname = slot1;
 				}
 
@@ -118,7 +145,8 @@ public class Typing : MonoBehaviour {
 						Debug.Log (InputSequence);
 				}
 				if ((CurrentKeyLocked != slot1)&&(CurrentKeyLocked!="")&&!SequenceEdited) { //If you mismatched, and you are hitting something, and the sequence isn't about to change
-						Debug.Log ("Wrong key hit.");
+			Debug.Log ("CurrentKeyLocked = " + CurrentKeyLocked + "slot1=" +slot1);			
+			Debug.Log ("Wrong key hit.");
 			TimesErrored++;
 				}
 				if ((InputSequence == "")&&!Done) { //Reached the end of a sequence
@@ -133,15 +161,15 @@ public class Typing : MonoBehaviour {
 		void TaskSwitcher(int TasksDone){
 		CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
 		if (TasksDone == 1) {
-			sequence="f9d2e3r4";
+			sequence="f1";
 					
 		}
 		if (TasksDone == 2) {
-						sequence = "p2r3t4";
+						sequence = "p2";
 
 				}
 		if (TasksDone == 3) {
-			sequence="(3)2";
+			sequence="(3)2+3-2";
 				}
 		if (TasksDone == 4) {
 						Done = true;
@@ -157,7 +185,7 @@ public class Typing : MonoBehaviour {
 						InsultText.GetComponent<Text> ().text = "";
 				}
 		}
-	void KeycodeConverter(){
+/*	void KeycodeConverter(){
 		CapitalLastHitKey = LastHitKey.ToUpper();
 		CapitalCurrentKey = CurrentKey.ToUpper ();
 		if (LastHitKey != "") {
@@ -174,7 +202,9 @@ public class Typing : MonoBehaviour {
 		}
 
 	}
-	/*KeyCode ConvertToKeycode(char foley){
+	*/
+	/*
+	 * KeyCode ConvertToKeycode(char foley){
 		string sasha= foley.ToString;
 			sasha = sasha.ToUpper ();
 		KeyCode tasha = (KeyCode)System.Enum.Parse (typeof(KeyCode), foley);
