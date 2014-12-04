@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class EggPan: MonoBehaviour {
+public class EggPan : MonoBehaviour {
+	public RawImage Pan;
 	public GameObject KeyHitText;
 	public GameObject SequenceText;
 	public GameObject CompletedText;
@@ -37,11 +38,28 @@ public class EggPan: MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+	
 	void Update () 
-	{
-		
-		if (Input.inputString != "") {
+	{bool skippy = false;
+		if(Input.GetButtonDown("LeftArrowAlias")){
+			CurrentKeyLocked="(";
+			skippy=true;
+		}
+		if(Input.GetButtonDown("RightArrowAlias")){
+			CurrentKeyLocked=")";
+			skippy=true;
+		}
+		if(Input.GetButtonDown("UpArrowAlias")){
+			CurrentKeyLocked="+";
+			skippy=true;
+		}
+		if(Input.GetButtonDown("DownArrowAlias")){
+			CurrentKeyLocked="-";
+			skippy=true;
+		}
+		if (Input.inputString != ""&&(!skippy)) {
 			CurrentKeyLocked = Input.inputString; //Set Current Key Locked. Will not set "nothing being hit"
+			Debug.Log(Input.inputString);
 		}
 		
 		
@@ -99,6 +117,8 @@ public class EggPan: MonoBehaviour {
 			prettyname = "Up Arrow";
 		} else if (slot1 == "-") {
 			prettyname = "Down Arrow";
+		} else if (slot1 == " ") {
+			prettyname = "Spacebar";
 		} else {
 			prettyname = slot1;
 		}
@@ -124,6 +144,7 @@ public class EggPan: MonoBehaviour {
 			Debug.Log (InputSequence);
 		}
 		if ((CurrentKeyLocked != slot1)&&(CurrentKeyLocked!="")&&!SequenceEdited) { //If you mismatched, and you are hitting something, and the sequence isn't about to change
+			Debug.Log ("CurrentKeyLocked = " + CurrentKeyLocked + "slot1=" +slot1);			
 			Debug.Log ("Wrong key hit.");
 			TimesErrored++;
 		}
@@ -139,15 +160,15 @@ public class EggPan: MonoBehaviour {
 	void TaskSwitcher(int TasksDone){
 		CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
 		if (TasksDone == 1) {
-			sequence="-1+1-1";
-			
+			sequence = "-1+1-1";
+			Pan.transform.position = new Vector2(0,-50);
 		}
 		if (TasksDone == 2) {
-			sequence = "+1-1+1-1+1";
+			sequence = "p2";
 			
 		}
 		if (TasksDone == 3) {
-			sequence="a2";
+			sequence="(3)2+3-2";
 		}
 		if (TasksDone == 4) {
 			Done = true;
@@ -163,24 +184,26 @@ public class EggPan: MonoBehaviour {
 			InsultText.GetComponent<Text> ().text = "";
 		}
 	}
-	void KeycodeConverter(){
+	/*	void KeycodeConverter(){
 		CapitalLastHitKey = LastHitKey.ToUpper();
 		CapitalCurrentKey = CurrentKey.ToUpper ();
 		if (LastHitKey != "") {
-			ConvertedLastKeyHit = (KeyCode)System.Enum.Parse (typeof(KeyCode), CapitalLastHitKey);
-		}
+						ConvertedLastKeyHit = (KeyCode)System.Enum.Parse (typeof(KeyCode), CapitalLastHitKey);
+				}
 		if (LastHitKey == "") {
 			ConvertedLastKeyHit=KeyCode.F15;
-		}
+				}
 		if(CurrentKey!=""){
 			ConvertedCurrentKey=(KeyCode)System.Enum.Parse(typeof(KeyCode),CapitalCurrentKey);
-		}
+			                                               }
 		if (CurrentKey == "") {
 			ConvertedCurrentKey=KeyCode.F15;		
 		}
-		
+
 	}
-	/*KeyCode ConvertToKeycode(char foley){
+	*/
+	/*
+	 * KeyCode ConvertToKeycode(char foley){
 		string sasha= foley.ToString;
 			sasha = sasha.ToUpper ();
 		KeyCode tasha = (KeyCode)System.Enum.Parse (typeof(KeyCode), foley);
