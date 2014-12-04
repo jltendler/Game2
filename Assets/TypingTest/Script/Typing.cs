@@ -35,7 +35,9 @@ public class Typing : MonoBehaviour {
 		CompletedText.GetComponent<Text>().text = "";
 		InsultText.GetComponent<Text>().text="";
 	}
-	
+	void Awake(){
+		DontDestroyOnLoad (this);
+	}
 	// Update is called once per frame
 	void Update () 
 		{
