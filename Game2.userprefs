@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TypingTest\Script\EggPan.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/StartingCar/StartingCar.cs">
     <Files>
-      <File FileName="Assets\TypingTest\Script\EggPan.cs" Line="146" Column="5" />
-      <File FileName="Assets\TypingTest\Script\BrushTeeth.cs" Line="139" Column="34" />
-      <File FileName="Assets\Editor\TexturePostProcessor.cs" Line="18" Column="1" />
+      <File FileName="Assets/TypingTest/Script/EggPan.cs" Line="4" Column="1" />
+      <File FileName="Assets/StartingCar/StartingCar.cs" Line="164" Column="28" />
+      <File FileName="Assets/AlarmClock/AlarmClock.cs" Line="11" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
