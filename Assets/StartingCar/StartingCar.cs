@@ -125,7 +125,7 @@ public class StartingCar : MonoBehaviour {
 			int PressTimes=InputSequence[1]-'0'; //clever trick to make a string an int.
 			slot2 = InputSequence [1].ToString ();
 			ToEnglish(slot1);//Make prettyname actually pretty
-			SequenceText.GetComponent<Text>().text="Hit: " + prettyname + " To Turn Off The Alarm!";
+			SequenceText.GetComponent<Text>().text="Hit: " + prettyname + " To Start the Car!";
 			string RepeatCountString = RepeatCount.ToString ();
 			
 			if ((LastHitKey == slot1) && (RepeatCountString == slot2)) {
@@ -140,7 +140,7 @@ public class StartingCar : MonoBehaviour {
 			TimesErrored++;
 		}
 		if ((InputSequence == "")&&!Done) { //Reached the end of a sequence
-			Debug.Log ("Done with a sequence..");
+			Debug.Log ("Done with a sequence...");
 			TasksDone++;
 			TaskSwitcher (TasksDone);
 			
@@ -154,25 +154,34 @@ public class StartingCar : MonoBehaviour {
 	void TaskSwitcher(int TasksDone){
 		
 		if (TasksDone == 1) {
+			//Play key in ignition sound and start beeping
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
-			sequence = "u1i1o1l1,1m1n1";
+			sequence = "u1i1k1m1n1h1";
 			
 		}
 		if (TasksDone == 2) {
+			//Key clangy sound
+			//stop beeping
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
-			sequence = "u1i1o1l1,1m1n1";
+			sequence = "g1h1j1";
 		}
 		if (TasksDone == 3) {
+			//start beeping
+			//Key insert key
 			CompletedText.SetActive(true);
-			currenttime=0;
-			sequence="x9";
-			Done=true;
+			sequence="j1h1g1";
+		
+
+
 		}
 		if (TasksDone == 4) {
-			Done = true;
-			Debug.Log ("TaskSwitcher() has decided you are done.");
+			//Start car sound
+
+			sequence = "u1i1k1m1n1h1";
+			Debug.Log ("Task 4?");
+			//Start Car
 		}
 		
 	}
