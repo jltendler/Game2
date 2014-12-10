@@ -1,16 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class ComputerPower : MonoBehaviour {
+public class OvenCooking : MonoBehaviour {
 	public GameObject KeyHitText;
 	public GameObject SequenceText;
 	public GameObject CompletedText;
 	public GameObject InsultText;
 	public GameObject SnoozeText;
 	public GameObject SnoozePanel;
-	public GameObject BlueScreen;
-	public GameObject PCBackground;
-	string sequence = "o1i1";
+	string sequence = "p1";
 	float currenttime;
 	string slot1;
 	string slot2;
@@ -51,15 +49,17 @@ public class ComputerPower : MonoBehaviour {
 		
 		
 		if (TasksDone == 1) {
-			SequenceText.GetComponent<Text> ().text = "Power it down! Hit: " + sequence[0] + " To turn off the Computer!";
+			SequenceText.GetComponent<Text> ().text = "Pre heat the oven! Hit: " + sequence[0] + " To turn up the heat!";
 		}
 		if (TasksDone == 2) {
-			SequenceText.GetComponent<Text>().text="Turn it back on! Hit: " + sequence[0] + " To power on the Computer!";
+			SequenceText.GetComponent<Text>().text="Set a timer! Hit: " + sequence[0] + " To start the clock!";
 		}
 		if (TasksDone == 3) {
-			SequenceText.GetComponent<Text>().text="Nice It worked! Hit: " + "SpaceBar" + " To Start Coding!";
+			SequenceText.GetComponent<Text>().text="Cookies are done! Hit: " + sequence[0] + " To turn off the oven!";
 		}
-		
+		if (TasksDone == 4) {
+			SequenceText.GetComponent<Text>().text="The cookies need to cool! Hit: " + sequence[0] + " To take out the cookies!";
+		}
 		
 		
 		bool skippy = false;
@@ -147,7 +147,7 @@ public class ComputerPower : MonoBehaviour {
 			ToEnglish(slot1);//Make prettyname actually pretty
 			//	SequenceText.GetComponent<Text>().text="Hit: " + prettyname + " To Change Radio Station!";
 			
-			if(TasksDone==0){SequenceText.GetComponent<Text>().text="Boot Up The Computer. Hit: " + prettyname + " To Power On.";
+			if(TasksDone==0){SequenceText.GetComponent<Text>().text="Let's make some cookies. Hit: " + prettyname + " To turn on the oven.";
 				Debug.Log("First time.");}
 			string RepeatCountString = RepeatCount.ToString ();
 			
@@ -180,12 +180,11 @@ public class ComputerPower : MonoBehaviour {
 		
 		if (TasksDone == 1) {
 			//Power off
-			BlueScreen.SetActive(true);
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "i1o1";
+			sequence = "317151";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Oh No Blue Screen!";
+			SnoozeText.GetComponent<Text>().text="Oven On!";
 			//SequenceText.GetComponent<Text>().text="Time for work! Hit: " + sequence[0] + " To Swipe Your Card!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
@@ -194,12 +193,11 @@ public class ComputerPower : MonoBehaviour {
 		
 		if (TasksDone == 2) {
 			//Power on
-			BlueScreen.SetActive(false);
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "o1i1";
+			sequence = "1101";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Power off!";
+			SnoozeText.GetComponent<Text>().text="Pre Heat!";
 			//SequenceText.GetComponent<Text>().text="Flip your card Dummy! Hit: " + "Spacebar" + " To flip!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
@@ -207,23 +205,32 @@ public class ComputerPower : MonoBehaviour {
 		}
 		if (TasksDone == 3) {
 			//Hit the button again
-			PCBackground.SetActive(true);
-			sequence = " 1";
+			sequence = "q1";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Power on!";
+			SnoozeText.GetComponent<Text>().text="10 Minutes Later!";
+			//SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
+			CompletedText.SetActive(true);
+			currenttime=Time.time+5;
+		}
+		if (TasksDone == 4) {
+			//Hit the button again
+			sequence = "e1d1c1";
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Oven Off!";
 			//SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
-			
 		}
-		if (TasksDone == 4){
+
+		if (TasksDone == 5)
+		{
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Time to Work!";
-			Debug.Log ("Computer On");
+			SnoozeText.GetComponent<Text>().text="NOM NOM NOM!";
+			Debug.Log ("Enjoy Your Cookies");
 			currenttime=Time.time+5;
 			
 		}
-		if (TasksDone == 5) {
+		if (TasksDone == 6) {
 			currenttime=(Time.time+5);
 			Done=true;
 		}
