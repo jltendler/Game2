@@ -8,6 +8,8 @@ public class Radio : MonoBehaviour {
 	public GameObject InsultText;
 	public GameObject SnoozeText;
 	public GameObject SnoozePanel;
+	public GameObject Speaker;
+	public AudioClip GNR, Country, Dub, Polka, Scream, Static, CW;
 	string sequence = "11";
 	float currenttime;
 	string slot1;
@@ -43,7 +45,7 @@ public class Radio : MonoBehaviour {
 	// Update is called once per frame
 	
 	void Update () 
-	{	if ((Time.time > currenttime)) {
+	{	if ((Time.time > currenttime)&&!Done) {
 			CompletedText.SetActive(false);
 			SnoozePanel.SetActive(false);
 			currenttime = 0;
@@ -155,8 +157,10 @@ public class Radio : MonoBehaviour {
 			
 		}
 		SequenceEdited = false;
-		if (Done) {
+		if ((Done)&&(Time.time>currenttime)) {
 			Debug.Log ("Safe to exit Scene.");
+			//Call to next scene.
+
 		}
 	}
 	
@@ -203,11 +207,11 @@ public class Radio : MonoBehaviour {
 		
 		}
 		if (TasksDone == 5) {
-			//Careless Whisper
+			//Country
 			sequence="61";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="SMOOTH JAZZ";
-			SequenceText.GetComponent<Text>().text="Now this is what I'm talking about! Hit: " + sequence[0] + " To keep listening";
+			SnoozeText.GetComponent<Text>().text="BLUEGRASS!";
+			SequenceText.GetComponent<Text>().text="Preset 6 is always good! Hit: " + sequence[0] + " to tune in!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 
@@ -215,7 +219,9 @@ public class Radio : MonoBehaviour {
 		if (TasksDone == 6) {
 			//Careless Whisper
 			sequence="+1";
-			SequenceText.GetComponent<Text>().text="I can't hear it! Hit: " + "Up Arrow" + " To Increase the Volume!";
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Smooth Jazzzzzzzz!";
+			SequenceText.GetComponent<Text>().text="Awww Yeah! Hit: " + "Up Arrow" + " To Increase the Volume!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			
@@ -223,16 +229,28 @@ public class Radio : MonoBehaviour {
 		if (TasksDone == 7) {
 			//Careless Whisper
 			sequence="+1";
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Volume Up!";
 			SequenceText.GetComponent<Text>().text="Still can't hear it! Hit: " + "Up Arrow" + " To turn up the volume again!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
+			LastHitKey="";
+			CurrentKeyLocked="";
 			
 		}
 		if (TasksDone == 8) {
+			sequence="+1";
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Volume Max!";
 			Debug.Log ("Found Your Station");
-			Done = true;
+
+			currenttime=Time.time+5;
+
 		}
-		
+		if (TasksDone == 9) {
+			currenttime=(Time.time+5);
+			Done=true;
+				}
 	}
 	void ErrorCheck(){
 		if ((TimesErrored != PreviousTimesErrored)) {
