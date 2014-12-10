@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 3de2b3f833177b6428c306e41a77a0c6
+guid: 7b968224789040a43b67617a4baf82c1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mouth
+    21300000: Just Teeth
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -18,7 +18,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
@@ -40,7 +40,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 8
+  textureType: 5
   buildTargetSettings: []
   spriteSheet:
     sprites: []

@@ -9,7 +9,9 @@ public class Radio : MonoBehaviour {
 	public GameObject SnoozeText;
 	public GameObject SnoozePanel;
 	public GameObject Speaker;
+	public GameObject StaticSpeaker;
 	public AudioClip GNR, Country, Dub, Polka, Scream, Static, CW;
+	public GameObject RadioText;
 	string sequence = "11";
 	float currenttime;
 	string slot1;
@@ -40,6 +42,7 @@ public class Radio : MonoBehaviour {
 		CurrentKey = "";
 		CurrentKeyLocked = "";
 		InsultText.GetComponent<Text>().text="";
+		RadioText.GetComponent<Text>().text="Radio Off";
 	}
 	
 	// Update is called once per frame
@@ -167,7 +170,11 @@ public class Radio : MonoBehaviour {
 	void TaskSwitcher(int TasksDone){
 		
 		if (TasksDone == 1) {
+			RadioText.GetComponent<Text>().text="96.7 - The Hawk";
 			//Classic Rock
+			StaticSpeaker.audio.Play();
+			Speaker.audio.clip=GNR;
+			Speaker.audio.PlayDelayed(.25f);
 			sequence = "21";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Classic Rock!";
@@ -177,20 +184,31 @@ public class Radio : MonoBehaviour {
 			
 		}
 		if (TasksDone == 2) {
+			RadioText.GetComponent<Text>().text="103.5 - Das funksender";
+			Speaker.audio.Stop();
+			StaticSpeaker.audio.Play();
+			Speaker.audio.clip=Polka;
+			Speaker.audio.PlayDelayed(.25f);
 			sequence = "31";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Exotic Tunes!";
-			SequenceText.GetComponent<Text>().text="Such an ex. Hit: " + sequence[0] + " To Change Radio Station!";
+			SequenceText.GetComponent<Text>().text="Too Polka for me. Hit: " + sequence[0] + " To Change Radio Station!";
 			//Polka,Folk,Spanish Radio
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 		
 		}
 		if (TasksDone == 3) {
+			RadioText.GetComponent<Text>().text="99.7 - The Dissenter";
 			//Screamo
+			Speaker.audio.Stop();
+			StaticSpeaker.audio.Play();
+			Speaker.audio.clip=Scream;
+			Speaker.audio.PlayDelayed(.25f);
+
 			sequence="41";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="RAWRRRRRRRRR";
+			SnoozeText.GetComponent<Text>().text="SCREAMO!";
 			SequenceText.GetComponent<Text>().text="Woah! I'm really not feeling it. Hit: " + sequence[0] + " To Change Radio Station!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
@@ -198,6 +216,11 @@ public class Radio : MonoBehaviour {
 		}
 		if (TasksDone == 4) {
 			//Dubstep
+			RadioText.GetComponent<Text>().text="102.3 - WUBBBBBBBBBBB";
+			Speaker.audio.Stop();
+			StaticSpeaker.audio.Play();
+			Speaker.audio.clip=Dub;
+			Speaker.audio.PlayDelayed(.25f);
 			sequence="51";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="DDDDDDDROP THE BASS!";
@@ -208,9 +231,14 @@ public class Radio : MonoBehaviour {
 		}
 		if (TasksDone == 5) {
 			//Country
+			RadioText.GetComponent<Text>().text="107.4 - Moonshine Radio";
+			Speaker.audio.Stop();
+			StaticSpeaker.audio.Play();
+			Speaker.audio.clip=Country;
+			Speaker.audio.PlayDelayed(.25f);
 			sequence="61";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="BLUEGRASS!";
+			SnoozeText.GetComponent<Text>().text="Country!";
 			SequenceText.GetComponent<Text>().text="Preset 6 is always good! Hit: " + sequence[0] + " to tune in!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
@@ -218,6 +246,11 @@ public class Radio : MonoBehaviour {
 		}
 		if (TasksDone == 6) {
 			//Careless Whisper
+			RadioText.GetComponent<Text>().text="94.1 - The Jive";
+			Speaker.audio.Stop();
+			StaticSpeaker.audio.Play();
+			Speaker.audio.clip=CW;
+			Speaker.audio.PlayDelayed(.25f);
 			sequence="+1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Smooth Jazzzzzzzz!";
@@ -227,7 +260,8 @@ public class Radio : MonoBehaviour {
 			
 		}
 		if (TasksDone == 7) {
-			//Careless Whisper
+			RadioText.GetComponent<Text>().text="Volume=60%";
+			Speaker.audio.volume=.75f;
 			sequence="+1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Volume Up!";
@@ -239,6 +273,8 @@ public class Radio : MonoBehaviour {
 			
 		}
 		if (TasksDone == 8) {
+			RadioText.GetComponent<Text>().text="Volume=100%";
+			Speaker.audio.volume=1f;
 			sequence="+1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Volume Max!";
