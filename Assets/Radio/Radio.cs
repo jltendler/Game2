@@ -10,6 +10,7 @@ public class Radio : MonoBehaviour {
 	public GameObject SnoozePanel;
 	public GameObject Speaker;
 	public GameObject StaticSpeaker;
+	public GameObject Forever;
 	public AudioClip GNR, Country, Dub, Polka, Scream, Static, CW;
 	public GameObject RadioText;
 	string sequence = "11";
@@ -38,6 +39,7 @@ public class Radio : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
@@ -257,6 +259,8 @@ public class Radio : MonoBehaviour {
 			SequenceText.GetComponent<Text>().text="Awww Yeah! Hit: " + "Up Arrow" + " To Increase the Volume!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
+			LastHitKey="";
+			CurrentKeyLocked="";
 			
 		}
 		if (TasksDone == 7) {
@@ -273,6 +277,8 @@ public class Radio : MonoBehaviour {
 			
 		}
 		if (TasksDone == 8) {
+			LastHitKey="";
+			CurrentKeyLocked="";
 			RadioText.GetComponent<Text>().text="Volume=100%";
 			Speaker.audio.volume=1f;
 			sequence="+1";

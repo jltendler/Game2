@@ -9,6 +9,7 @@ public class EggPan : MonoBehaviour {
 	public GameObject CompletedText;
 	public GameObject InsultText;
 	public GameObject SnoozeText;
+	public GameObject Forever;
 	public GameObject SnoozePanel;
 	float currenttime;
 	public AnimationClip flip;
@@ -36,6 +37,7 @@ public class EggPan : MonoBehaviour {
 	//	string ktest="K";
 	// Use this for initialization
 	void Start () {
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";

@@ -6,6 +6,7 @@ public class StartingCar : MonoBehaviour {
 	public GameObject SequenceText;
 	public GameObject CompletedText;
 	public GameObject InsultText;
+	public GameObject Forever;
 	string sequence = "j1h1g1";
 	float currenttime;
 	string slot1;
@@ -29,6 +30,7 @@ public class StartingCar : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";

@@ -9,6 +9,7 @@ public class ComputerPower : MonoBehaviour {
 	public GameObject SnoozeText;
 	public GameObject SnoozePanel;
 	public GameObject BlueScreen;
+	public GameObject Forever;
 	public GameObject PCBackground;
 	string sequence = "o1i1";
 	float currenttime;
@@ -33,6 +34,7 @@ public class ComputerPower : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";

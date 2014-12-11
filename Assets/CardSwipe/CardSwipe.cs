@@ -7,6 +7,7 @@ public class CardSwipe : MonoBehaviour {
 	public GameObject CompletedText;
 	public GameObject InsultText;
 	public GameObject SnoozeText;
+	public GameObject Forever;
 	public GameObject SnoozePanel;
 	string sequence = "t1g1v1";
 	float currenttime;
@@ -31,6 +32,7 @@ public class CardSwipe : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";

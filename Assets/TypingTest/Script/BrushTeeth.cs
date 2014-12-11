@@ -8,7 +8,8 @@ public class BrushTeeth : MonoBehaviour {
 	public GameObject CompletedText;
 	public GameObject InsultText;
 	public GameObject BrushAlias;
-	string sequence = ")1(1)1(1)1(1)1(1)1(1)1(1";
+	public GameObject Forever;
+	string sequence = ")1(1)1(1";
 	
 	string slot1;
 	string slot2;
@@ -26,16 +27,23 @@ public class BrushTeeth : MonoBehaviour {
 	KeyCode ConvertedCurrentKey;
 	string FormedString;
 	bool SequenceEdited;
+	float duude, dude;
+
 	string CurrentKeyLocked;
 	int TasksDone=0;
+	public GameObject selfAlias;
+	TextureChanger scriptyscript;
 	//	string ktest="K";
 	// Use this for initialization
 	void Start () {
+		duude=150f; dude=-150;
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
 		CompletedText.GetComponent<Text>().text = "";
 		InsultText.GetComponent<Text>().text="";
+		scriptyscript=	selfAlias.GetComponent<TextureChanger>();
 	}
 	
 	// Update is called once per frame
@@ -136,8 +144,7 @@ public class BrushTeeth : MonoBehaviour {
 			string RepeatCountString = RepeatCount.ToString ();
 			
 			if ((LastHitKey == slot1) && (RepeatCountString == slot2)) {
-				float duude = Random.Range(120,150);
-				float dude=((duude) *-1);
+
 				//
 				//Debug.Log ("Typed successfully");
 				if(slot1=="("){ //Move brush left when appropriate
@@ -160,6 +167,7 @@ public class BrushTeeth : MonoBehaviour {
 			TimesErrored++;
 		}
 		if ((InputSequence == "")&&!Done) { //Reached the end of a sequence
+
 			Debug.Log ("Done with a sequence..");
 			TasksDone++;
 			TaskSwitcher (TasksDone);
@@ -172,21 +180,31 @@ public class BrushTeeth : MonoBehaviour {
 	}
 	
 	void TaskSwitcher(int TasksDone){
+
 		CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
 		if (TasksDone == 1) {
-			sequence = "";
+			scriptyscript.Clean();
+			sequence = ")1(1)1(1";
 			
 		}
 		if (TasksDone == 2) {
-			sequence = " 1";
+			sequence = ")1(1)1(1)1";
+			scriptyscript.Clean ();
 			
 			
 		}
 		if (TasksDone == 3) {
-			sequence="+1-1+1-1";
+			sequence="(1)1(1)1(1)1";
+			scriptyscript.Clean();
 		}
 		if (TasksDone == 4) {
-			Done = true;
+			//Hit Space To Spit.
+			sequence=" 1";
+
+		}
+		if (TasksDone == 5) {
+			sequence="";
+			Done=true;
 		}
 		
 	}

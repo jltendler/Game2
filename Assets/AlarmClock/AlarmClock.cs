@@ -13,6 +13,7 @@ public class AlarmClock : MonoBehaviour {
 	public GameObject InsultText;
 	public AnimationClip blink;
 	public AudioSource AlarmSound;
+	public GameObject Forever;
 	//Animator EggA;
 	string sequence = "s1";
 	float currenttime;
@@ -38,6 +39,7 @@ public class AlarmClock : MonoBehaviour {
 	//	string ktest="K";
 	// Use this for initialization
 	void Start () {
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
@@ -189,6 +191,8 @@ public class AlarmClock : MonoBehaviour {
 		SequenceEdited = false;
 		if (Done) {
 			Debug.Log ("Safe to exit Scene.");
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Alarm");
 		}
 	}
 	
@@ -215,7 +219,7 @@ public class AlarmClock : MonoBehaviour {
 		}
 		if (TasksDone == 4) {
 			Done = true;
-			Debug.Log ("TaskSwitcher() has decided you are done.");
+
 		}
 		
 	}
