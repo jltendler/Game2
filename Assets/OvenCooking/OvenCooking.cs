@@ -8,6 +8,12 @@ public class OvenCooking : MonoBehaviour {
 	public GameObject InsultText;
 	public GameObject SnoozeText;
 	public GameObject SnoozePanel;
+	public GameObject OvenText;
+	public GameObject OvenOffLight;
+	public GameObject OvenOpen;
+	public GameObject OvenHalf;
+	public GameObject OvenClosed;
+	public GameObject Cookies;
 	string sequence = "p1";
 	float currenttime;
 	string slot1;
@@ -46,13 +52,37 @@ public class OvenCooking : MonoBehaviour {
 			currenttime = 0;
 		}
 		
-		
+		if ((TasksDone == 1) && (Input.GetKeyUp("3"))) {
+			OvenText.GetComponent<Text>().text="3";
+		} else if ((TasksDone == 1) && (Input.GetKeyUp("7"))) {
+			OvenText.GetComponent<Text>().text="37";
+		} else if ((TasksDone == 1) && (Input.GetKeyUp("5"))) {
+			OvenText.GetComponent<Text>().text="375";
+		}
+
+		if ((TasksDone == 2) && (Input.GetKeyUp("t"))) {
+			OvenText.GetComponent<Text>().text="00:00";
+		} else if ((TasksDone == 2) && (Input.GetKeyUp("1"))) {
+			OvenText.GetComponent<Text>().text="10:00";
+		} else if ((TasksDone == 2) && (Input.GetKeyUp("5"))) {
+			OvenText.GetComponent<Text>().text="15:00";
+		} 
+
+		if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.E))) {
+			OvenClosed.SetActive (false);
+			OvenHalf.SetActive (true);
+			OvenOffLight.SetActive(false);	
+		} else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.D))) {
+			OvenHalf.SetActive (false);
+			OvenOpen.SetActive (true);
+			Cookies.SetActive(true);
+		}
 		
 		if (TasksDone == 1) {
 			SequenceText.GetComponent<Text> ().text = "Pre heat the oven! Hit: " + sequence[0] + " To turn up the heat!";
 		}
 		if (TasksDone == 2) {
-			SequenceText.GetComponent<Text>().text="Set a timer! Hit: " + sequence[0] + " To start the clock!";
+			SequenceText.GetComponent<Text>().text="Set a timer! Hit: " + sequence[0] + " To start the timer!";
 		}
 		if (TasksDone == 3) {
 			SequenceText.GetComponent<Text>().text="Cookies are done! Hit: " + sequence[0] + " To turn off the oven!";
@@ -179,10 +209,13 @@ public class OvenCooking : MonoBehaviour {
 	void TaskSwitcher(int TasksDone){
 		
 		if (TasksDone == 1) {
-			//Power off
+			//Oven Light On & PreHeat Oven
+			OvenText.SetActive(true);
+			OvenText.GetComponent<Text>().text="";
+			OvenOffLight.SetActive(false);
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "317151";
+			sequence = "317151s1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Oven On!";
 			//SequenceText.GetComponent<Text>().text="Time for work! Hit: " + sequence[0] + " To Swipe Your Card!";
@@ -192,10 +225,11 @@ public class OvenCooking : MonoBehaviour {
 		}
 		
 		if (TasksDone == 2) {
-			//Power on
+			//Set Timer
+			OvenText.GetComponent<Text>().text="375";
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "1101";
+			sequence = "t11151s1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Pre Heat!";
 			//SequenceText.GetComponent<Text>().text="Flip your card Dummy! Hit: " + "Spacebar" + " To flip!";
@@ -204,16 +238,19 @@ public class OvenCooking : MonoBehaviour {
 			
 		}
 		if (TasksDone == 3) {
-			//Hit the button again
+			//
+			OvenText.GetComponent<Text>().text="00:00";
 			sequence = "q1";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="10 Minutes Later!";
+			SnoozeText.GetComponent<Text>().text="15 Minutes Later!";
 			//SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+5;
 		}
 		if (TasksDone == 4) {
-			//Hit the button again
+			//Oven Light Off
+			OvenText.SetActive(false);
+			OvenOffLight.SetActive(true);
 			sequence = "e1d1c1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Oven Off!";

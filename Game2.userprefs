@@ -1,5 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Radio\Radio.cs">
     <Files>
       <File FileName="Assets\AlarmClock\AlarmClock.cs" Line="194" Column="63" />
@@ -11,6 +12,11 @@
       <File FileName="Assets\StartingCar\StartingCar.cs" Line="33" Column="3" />
       <File FileName="Assets\ForeverScript.cs" Line="72" Column="30" />
       <File FileName="Assets\BrushTeeth\TextureChanger.cs" Line="133" Column="22" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OvenCooking/OvenCooking.cs">
+    <Files>
+      <File FileName="Assets/OvenCooking/OvenCooking.cs" Line="218" Column="23" />
+>>>>>>> Stashed changes
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
