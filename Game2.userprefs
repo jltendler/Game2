@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OvenCooking/OvenCooking.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TypingTest/Script/EggPan.cs">
     <Files>
-      <File FileName="Assets/ComputerPower/ComputerPower.cs" Line="57" Column="64" />
-      <File FileName="Assets/OvenCooking/OvenCooking.cs" Line="208" Column="20" />
+      <File FileName="Assets/ComputerPower/ComputerPower.cs" Line="187" Column="32" />
+      <File FileName="Assets/OvenCooking/OvenCooking.cs" Line="46" Column="8" />
+      <File FileName="Assets/TypingTest/Script/EggPan.cs" Line="220" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
