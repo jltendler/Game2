@@ -50,6 +50,7 @@
      <Compile Include="Assets\BrushTeeth\TextureChanger.cs" />
      <Compile Include="Assets\CardSwipe\CardSwipe.cs" />
      <Compile Include="Assets\ComputerPower\ComputerPower.cs" />
+     <Compile Include="Assets\OvenCooking\OvenCooking.cs" />
      <Compile Include="Assets\Radio\Radio.cs" />
      <Compile Include="Assets\StartingCar\StartingCar.cs" />
      <Compile Include="Assets\TypingTest\Script\BrushTeeth.cs" />
