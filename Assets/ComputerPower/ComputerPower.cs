@@ -187,7 +187,7 @@ public class ComputerPower : MonoBehaviour {
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Oh No Blue Screen!";
 			//SequenceText.GetComponent<Text>().text="Time for work! Hit: " + sequence[0] + " To Swipe Your Card!";
-			CompletedText.SetActive(true);
+			//CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			
 		}

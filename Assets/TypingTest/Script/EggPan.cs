@@ -8,6 +8,9 @@ public class EggPan : MonoBehaviour {
 	public GameObject SequenceText;
 	public GameObject CompletedText;
 	public GameObject InsultText;
+	public GameObject SnoozeText;
+	public GameObject SnoozePanel;
+	float currenttime;
 	public AnimationClip flip;
 	Animator EggA;
 	string sequence = "+1-1+1";
@@ -44,7 +47,14 @@ public class EggPan : MonoBehaviour {
 	// Update is called once per frame
 	
 	void Update () 
-	{bool skippy = false;
+	{	if ((Time.time > currenttime) && !Done) {
+					CompletedText.SetActive (false);
+					SnoozePanel.SetActive (false);
+					currenttime = 0;
+			Debug.Log("Not waiting");
+				}
+
+		bool skippy = false;
 		if(Input.GetButtonDown("LeftArrowAlias")){
 			CurrentKeyLocked="(";
 			skippy=true;
@@ -175,23 +185,36 @@ public class EggPan : MonoBehaviour {
 	}
 	
 	void TaskSwitcher(int TasksDone){
-		CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
+		//CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
 		if (TasksDone == 1) {
-			sequence = "";
-		
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text = "Saute!";
+			sequence = "-1+1-1";
+			currenttime=Time.time+2;
 		}
+
 		if (TasksDone == 2) {
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text = "Over Easy!";
 			sequence = " 1";
-
-
+			currenttime = Time.time+2;
 		}
+
 		if (TasksDone == 3) {
 			Debug.Log("Flipped egg!");
 			Egg.animation.Play("Flip");
-			sequence="+1-1+1-1";
-			Done=true;
 		}
 		if (TasksDone == 4) {
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text = "Flip!";
+			sequence = "s1";
+			currenttime = Time.time+2;
+		}
+
+
+		if (TasksDone == 5) {
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text = "Breakfast!";
 			Done = true;
 			Debug.Log ("TaskSwitcher() has decided you are done.");
 		}
