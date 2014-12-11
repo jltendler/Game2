@@ -8,10 +8,10 @@ public class TVScene : MonoBehaviour {
 	public GameObject InsultText;
 	public GameObject SnoozeText;
 	public GameObject SnoozePanel;
-	public GameObject TVScreen;
-	public GameObject Channel1;
-	public GameObject Channel2;
-	public GameObject Channel3;
+	public RawImage TVScreen;
+	public Texture2D Channel1;
+	public Texture2D Channel2;
+	public Texture2D Channel3;
 	string sequence = " 1";
 	float currenttime;
 	string slot1;
@@ -32,17 +32,37 @@ public class TVScene : MonoBehaviour {
 	bool SequenceEdited;
 	string CurrentKeyLocked;
 	int TasksDone=0;
-	
+	public Texture2D StaticTexture;
+	public Color RandomBW;
 	// Use this for initialization
 	void Start () {
+		int counterbw = 0;
+
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
 		InsultText.GetComponent<Text>().text="";
+
+		StaticTexture = new Texture2D (526, 471);
+
+		for (int i=0; i<526; i++) {
+			for(int j=0; j<471; j++){
+				counterbw++;
+				float ColorVal=Random.Range(0f,1f);
+				RandomBW=new Color(ColorVal,ColorVal,ColorVal,1f);
+				StaticTexture.SetPixel(i,j,RandomBW);
+			}
+				}
+		StaticTexture.Apply ();
+		Debug.Log ("Counterbw: " + counterbw);
 	}
 	
 	// Update is called once per frame
-	
+
+
+
+
+
 	void Update () 
 	{	if ((Time.time > currenttime)&&!Done) {
 			CompletedText.SetActive(false);
@@ -51,16 +71,16 @@ public class TVScene : MonoBehaviour {
 		}
 		
 		if (TasksDone == 1) {
-			SequenceText.GetComponent<Text> ().text = "Let's flip through the channels! Hit: " + sequence[0] + " To change to Channel 1!";
+			SequenceText.GetComponent<Text> ().text = "Let's flip through the channels! Hit: " + prettyname + " To change to Channel 1!";
 		}
 		if (TasksDone == 2) {
-			SequenceText.GetComponent<Text>().text="Not too exciting! Hit: " + sequence[0] + " To change the channel again!";
+			SequenceText.GetComponent<Text>().text="Not too exciting! Hit: " + prettyname + " To change the channel again!";
 		}
 		if (TasksDone == 3) {
-			SequenceText.GetComponent<Text>().text="Hmmm let's see what else is on! Hit: " + sequence[0] + " To switch to Channel 3!";
+			SequenceText.GetComponent<Text>().text="Hmmm let's see what else is on! Hit: " + prettyname + " To switch to Channel 3!";
 		}
 		if (TasksDone == 4) {
-			SequenceText.GetComponent<Text>().text="Nothing interesting. Let's just get ready for bed. Hit: " + sequence[0] + " To turn off the TV!";
+			SequenceText.GetComponent<Text>().text="Nothing interesting. Let's just get ready for bed. Hit: " + prettyname + " To turn off the TV!";
 		}
 		
 		
@@ -181,9 +201,11 @@ public class TVScene : MonoBehaviour {
 	void TaskSwitcher(int TasksDone){
 		
 		if (TasksDone == 1) {
+			TVScreen.texture=StaticTexture;
 			//Start the TV, Pick first channel
 			//START THE STATIC 
 			//TVScreen.SetActive(true);
+			TVScreen.texture=StaticTexture;
 			LastHitKey = "";
 			CurrentKeyLocked = "";
 			sequence = "11";
@@ -196,30 +218,28 @@ public class TVScene : MonoBehaviour {
 		
 		if (TasksDone == 2) {
 			//Channel 1
-			Channel1.SetActive(true);
+			TVScreen.texture=Channel1;
 			LastHitKey = "";
 			CurrentKeyLocked = "";
 			sequence = "21";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Cartoon Network!";
+			SnoozeText.GetComponent<Text>().text="The Tonight Show!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			
 		}
 		if (TasksDone == 3) {
 			//Channel 2
-			Channel1.SetActive(false);
-			Channel2.SetActive(true);
+			TVScreen.texture=Channel2;
 			sequence = "31";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="The Tonight Show!";
+			SnoozeText.GetComponent<Text>().text="Cartoons!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 		}
 		if (TasksDone == 4) {
 			//Channel 3
-			Channel2.SetActive(false);
-			Channel3.SetActive(true);
+			TVScreen.texture=Channel3;
 			sequence = " 1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Food Network!";
