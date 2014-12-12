@@ -8,6 +8,9 @@ public class ForeverScript : MonoBehaviour {
 	public List<int> scenes = new List<int>();
 	public int level;
 	public int randomIndex;
+	public GameObject PauseCanvas;
+	public GameObject PauseText;
+	public bool paused=false;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,10 +19,33 @@ public class ForeverScript : MonoBehaviour {
 	void Awake(){
 		DontDestroyOnLoad (this);
 	}
-	
+	public void PauseGame(){
+
+		if (paused == false) {
+						Screen.showCursor = true;
+						Time.timeScale = 0;
+						PauseCanvas.SetActive (true);
+						paused = true;
+			AudioListener.pause=true;
+				} else if (paused == true) {
+						Screen.showCursor = false;
+						Time.timeScale = 1;
+						PauseCanvas.SetActive (false);
+						paused = false;
+			AudioListener.pause=false;
+				}
+
+
+	}
 	// Update is called once per frame
 	void Update () {
-	
+	//	Debug.Log (Application.loadedLevel);
+	if (Application.loadedLevel == 0) {
+						Screen.showCursor = true;
+				}
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			PauseGame();
+		}
 	}
 	public void SetShuffle(bool ShuffleSetting){
 				if (ShuffleSetting) {

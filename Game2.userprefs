@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/StartingCar/StartingCar.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ForeverScript.cs">
     <Files>
-      <File FileName="Assets/ResetAlarmClock/ResetAlarmClock.cs" Line="1" Column="1" />
-      <File FileName="Assets/StartingCar/StartingCar.cs" Line="218" Column="14" />
-      <File FileName="Assets/CardSwipe/CardSwipe.cs" Line="251" Column="3" />
+      <File FileName="Assets\ForeverScript.cs" Line="35" Column="30" />
+      <File FileName="Assets\ResetAlarmClock\ResetAlarmClock.cs" Line="1" Column="1" />
+      <File FileName="Assets\StartingCar\StartingCar.cs" Line="1" Column="1" />
+      <File FileName="Assets\CardSwipe\CardSwipe.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
