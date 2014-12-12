@@ -1,22 +1,12 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: d937ae3265a06ba438c34644315561ea
-TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 2
-  mipmaps:
-    mipMapMode: 0
-    enableMipMap: 1
-=======
-guid: 79163fc7c93f8457aa28953477cefa2c
+guid: 6b29730fb304747a0952b18c62ade69a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TVFrame
+    21300000: AlarmClock7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
->>>>>>> Stashed changes
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -38,7 +28,7 @@ TextureImporter:
     filterMode: 0
     aniso: 0
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

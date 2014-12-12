@@ -53,6 +53,7 @@
      <Compile Include="Assets\ForeverScript.cs" />
      <Compile Include="Assets\OvenCooking\OvenCooking.cs" />
      <Compile Include="Assets\Radio\Radio.cs" />
+     <Compile Include="Assets\ResetAlarmClock\ResetAlarmClock.cs" />
      <Compile Include="Assets\StartingCar\StartingCar.cs" />
      <Compile Include="Assets\TVScene\TVScene.cs" />
      <Compile Include="Assets\TypingTest\Script\BrushTeeth.cs" />
