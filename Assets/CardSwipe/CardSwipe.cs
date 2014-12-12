@@ -9,6 +9,8 @@ public class CardSwipe : MonoBehaviour {
 	public GameObject SnoozeText;
 	public GameObject Forever;
 	public GameObject SnoozePanel;
+	public GameObject CardWrong;
+	public GameObject CardRight;
 	string sequence = "t1g1v1";
 	float currenttime;
 	string slot1;
@@ -49,6 +51,21 @@ public class CardSwipe : MonoBehaviour {
 		}
 
 
+		if ((TasksDone == 3) && (Input.GetKeyUp (KeyCode.T))) {
+			CardRight.transform.position = CardRight.transform.position - new Vector3 (0,50,0);
+		} else if ((TasksDone == 3) && (Input.GetKeyUp (KeyCode.G))) {
+			CardRight.transform.position = CardRight.transform.position - new Vector3 (0,50,0);
+		}
+		else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.V))) {
+			CardRight.transform.position = CardRight.transform.position - new Vector3 (0,50,0);
+		}
+		else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.G))) {
+			CardRight.transform.position = CardRight.transform.position + new Vector3 (0,50,0);
+		}
+		else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.T))) {
+			CardRight.transform.position = CardRight.transform.position + new Vector3 (0,40,0);
+		}
+
 
 		if (TasksDone == 1) {
 						SequenceText.GetComponent<Text> ().text = "Swipe your Card Up! Hit: " + sequence [0] + " To Swipe again!";
@@ -59,7 +76,9 @@ public class CardSwipe : MonoBehaviour {
 		if (TasksDone == 3) {
 			SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
 		}
-
+		if (TasksDone == 4) {
+			SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
+		}
 
 
 		bool skippy = false;
@@ -180,6 +199,7 @@ public class CardSwipe : MonoBehaviour {
 
 		if (TasksDone == 1) {
 			//Flip The Card
+			CardWrong.transform.position = CardWrong.transform.position - new Vector3 (0,142,0);
 			LastHitKey = "";
 			CurrentKeyLocked = "";
 			sequence = "v1g1t1";
@@ -193,6 +213,7 @@ public class CardSwipe : MonoBehaviour {
 
 		if (TasksDone == 2) {
 			//Flip The Card
+			CardWrong.transform.position = CardWrong.transform.position + new Vector3 (0,142,0);
 			sequence = " 1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Swiped Up!";
@@ -203,15 +224,22 @@ public class CardSwipe : MonoBehaviour {
 		}
 		if (TasksDone == 3) {
 			//Swipe Again
-			sequence = "t1g1v1g1t1";
+			CardWrong.SetActive(false);
+			CardRight.SetActive(true);
+			sequence = "t1g1v1";
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Card Fliped!";
+			SnoozeText.GetComponent<Text>().text="Card Flipped!";
 			//SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			
 		}
-		if (TasksDone == 4){
+		if (TasksDone == 4) {
+			sequence = "g1t1";
+		}
+
+
+		if (TasksDone == 5){
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Clocked In!";
 			Debug.Log ("Found Your Station");
