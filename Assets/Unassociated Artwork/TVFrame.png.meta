@@ -1,14 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: d937ae3265a06ba438c34644315561ea
-TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 2
-  mipmaps:
-    mipMapMode: 0
-    enableMipMap: 1
-=======
-guid: 79163fc7c93f8457aa28953477cefa2c
 TextureImporter:
   fileIDToRecycleName:
     21300000: TVFrame
@@ -16,7 +7,6 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
->>>>>>> Stashed changes
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
