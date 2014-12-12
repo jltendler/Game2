@@ -186,7 +186,6 @@ public class ResetAlarmClock : MonoBehaviour {
 			sequence = "71";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Alarm On!";
-			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			
 		}
@@ -198,7 +197,6 @@ public class ResetAlarmClock : MonoBehaviour {
 			AlarmClock7.SetActive(true);
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="7AM!";
-			CompletedText.SetActive(true);
 			currenttime=Time.time+1;
 			
 		}
@@ -207,7 +205,6 @@ public class ResetAlarmClock : MonoBehaviour {
 			AlarmClock71.SetActive(true);
 			//SnoozePanel.SetActive(true);
 			//SnoozeText.GetComponent<Text>().text="The Tonight Show!";
-			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 		}
 

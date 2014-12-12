@@ -199,8 +199,8 @@ public class StartingCar : MonoBehaviour {
 			//Key insert key
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			KeyFull.SetActive(true);
-			KeyHalf.SetActive(false);
+			KeyFull.SetActive(false);
+			KeyHalf.SetActive(true);
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Turn That Key!";
 			sequence="u1i1k1m1n1h1 1";

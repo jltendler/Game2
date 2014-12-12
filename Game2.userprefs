@@ -1,21 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ForeverScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ResetAlarmClock/ResetAlarmClock.cs">
     <Files>
-      <File FileName="Assets\ForeverScript.cs" Line="35" Column="30" />
-      <File FileName="Assets\ResetAlarmClock\ResetAlarmClock.cs" Line="1" Column="1" />
-      <File FileName="Assets\StartingCar\StartingCar.cs" Line="1" Column="1" />
-      <File FileName="Assets\CardSwipe\CardSwipe.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TypingTest/Script/BrushTeeth.cs">
-    <Files>
-      <File FileName="Assets/ResetAlarmClock/ResetAlarmClock.cs" Line="1" Column="1" />
-      <File FileName="Assets/StartingCar/StartingCar.cs" Line="192" Column="60" />
-      <File FileName="Assets/CardSwipe/CardSwipe.cs" Line="82" Column="1" />
-      <File FileName="Assets/Radio/Radio.cs" Line="57" Column="4" />
-      <File FileName="Assets/TypingTest/Script/BrushTeeth.cs" Line="230" Column="49" />
->>>>>>> origin/master
+      <File FileName="Assets/PMBrush/PMBrush.cs" Line="230" Column="52" />
+      <File FileName="Assets/TypingTest/Script/BrushTeeth.cs" Line="14" Column="31" />
+      <File FileName="Assets/AlarmClock/AlarmClock.cs" Line="194" Column="25" />
+      <File FileName="Assets/TypingTest/Script/EggPan.cs" Line="208" Column="4" />
+      <File FileName="Assets/StartingCar/StartingCar.cs" Line="203" Column="26" />
+      <File FileName="Assets/ResetAlarmClock/ResetAlarmClock.cs" Line="188" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
