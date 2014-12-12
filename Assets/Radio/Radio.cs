@@ -253,10 +253,10 @@ public class Radio : MonoBehaviour {
 			StaticSpeaker.audio.Play();
 			Speaker.audio.clip=CW;
 			Speaker.audio.PlayDelayed(.25f);
-			sequence="+1";
+			sequence="+5";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Smooth Jazzzzzzzz!";
-			SequenceText.GetComponent<Text>().text="Awww Yeah! Hit: " + "Up Arrow" + " To Increase the Volume!";
+			SequenceText.GetComponent<Text>().text="Awww Yeah! Hit: " + "Up Arrow a bunch" + " To Increase the Volume!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			LastHitKey="";
@@ -266,10 +266,10 @@ public class Radio : MonoBehaviour {
 		if (TasksDone == 7) {
 			RadioText.GetComponent<Text>().text="Volume=60%";
 			Speaker.audio.volume=.75f;
-			sequence="+1";
+			sequence="+3";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Volume Up!";
-			SequenceText.GetComponent<Text>().text="Still can't hear it! Hit: " + "Up Arrow" + " To turn up the volume again!";
+			SequenceText.GetComponent<Text>().text="Still can't hear it! Hit: " + "Up Arrow a few more times" + " To turn up the volume again!";
 			CompletedText.SetActive(true);
 			currenttime=Time.time+2;
 			LastHitKey="";
@@ -281,7 +281,6 @@ public class Radio : MonoBehaviour {
 			CurrentKeyLocked="";
 			RadioText.GetComponent<Text>().text="Volume=100%";
 			Speaker.audio.volume=1f;
-			sequence="+1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Volume Max!";
 			Debug.Log ("Found Your Station");

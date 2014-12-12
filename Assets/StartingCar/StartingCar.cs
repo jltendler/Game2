@@ -154,8 +154,8 @@ public class StartingCar : MonoBehaviour {
 			
 		}
 		SequenceEdited = false;
-		if (Done) {
-			Debug.Log ("Safe to exit Scene.");
+		if ((Done)&&(Time.time>currenttime)) {
+			Debug.Log ("Safe to exit Scene."); 
 		}
 	}
 	
@@ -189,7 +189,7 @@ public class StartingCar : MonoBehaviour {
 			KeyFull.SetActive(true);
 			KeyHalf.SetActive(false);
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Let's try this again";
+			SnoozeText.GetComponent<Text>().text="Try The Key Again!";
 			currenttime=Time.time+2;
 			sequence="j1h1g1";
 		
@@ -211,7 +211,7 @@ public class StartingCar : MonoBehaviour {
 		if (TasksDone == 5) {
 			//Start car sound
 			SnoozePanel.SetActive(true);
-			SnoozeText.GetComponent<Text>().text="Success!";
+			SnoozeText.GetComponent<Text>().text="Drive Safe!";
 			Debug.Log ("Task 4?");
 			//Start Car
 			currenttime=Time.time+5;
