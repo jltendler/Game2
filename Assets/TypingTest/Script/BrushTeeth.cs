@@ -8,9 +8,11 @@ public class BrushTeeth : MonoBehaviour {
 	public GameObject CompletedText;
 	public GameObject InsultText;
 	public GameObject BrushAlias;
+	public GameObject SnoozeText;
+	public GameObject SnoozePanel;
 	public GameObject Forever;
 	string sequence = ")1(1)1(1";
-	
+	float currenttime;
 	string slot1;
 	string slot2;
 	string prettyname;
@@ -49,7 +51,26 @@ public class BrushTeeth : MonoBehaviour {
 	// Update is called once per frame
 	
 	void Update () 
-	{bool skippy = false;
+	{	if ((Time.time > currenttime)&&!Done) {
+			CompletedText.SetActive(false);
+			SnoozePanel.SetActive(false);
+			currenttime = 0;
+		}
+
+		if (TasksDone == 1) {
+			SequenceText.GetComponent<Text> ().text = "Keep Brushing! Still gross! Hit: " + prettyname + " To Brush!";
+		}
+		if (TasksDone == 2) {
+			SequenceText.GetComponent<Text>().text="Looking Better! Keep it up! Hit: " + prettyname + " To Brush!";
+		}
+		if (TasksDone == 3) { 
+			SequenceText.GetComponent<Text>().text="Almost clean! Hit: " + prettyname + " To Brush!";
+		}
+		if (TasksDone == 4) {
+			SequenceText.GetComponent<Text>().text="All Done! Hit: " + prettyname + " To Be Clean!";
+		}
+
+		bool skippy = false;
 		if(Input.GetButtonDown("LeftArrowAlias")){
 			CurrentKeyLocked="(";
 			skippy=true;
@@ -140,7 +161,7 @@ public class BrushTeeth : MonoBehaviour {
 			int PressTimes=InputSequence[1]-'0'; //clever trick to make a string an int.
 			slot2 = InputSequence [1].ToString ();
 			ToEnglish(slot1);//Make prettyname actually pretty
-			SequenceText.GetComponent<Text>().text="You need to hit: " + prettyname + " " +(PressTimes) + " Times!";
+			SequenceText.GetComponent<Text>().text="EWWW gotta brush those teeth! Hit: " + prettyname + " To get pearly whites";
 			string RepeatCountString = RepeatCount.ToString ();
 			
 			if ((LastHitKey == slot1) && (RepeatCountString == slot2)) {
@@ -181,11 +202,13 @@ public class BrushTeeth : MonoBehaviour {
 	
 	void TaskSwitcher(int TasksDone){
 
-		CompletedText.GetComponent<Text>().text = "You Have Completed " + TasksDone + " Sequences!";
 		if (TasksDone == 1) {
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text = "BRUSH!";
+			SequenceText.GetComponent<Text> ().text = "Keep Brushing! Still gross! Hit: " + prettyname + " To Brush!";
 			scriptyscript.Clean();
 			sequence = ")1(1)1(1";
-			
+			currenttime=Time.time+2;
 		}
 		if (TasksDone == 2) {
 			sequence = ")1(1)1(1)1";
@@ -203,7 +226,10 @@ public class BrushTeeth : MonoBehaviour {
 
 		}
 		if (TasksDone == 5) {
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text = "Squeaky Clean!";
 			sequence="";
+			currenttime = Time.time+5;
 			Done=true;
 		}
 		

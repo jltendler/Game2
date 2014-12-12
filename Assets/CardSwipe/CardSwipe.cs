@@ -68,8 +68,8 @@ public class CardSwipe : MonoBehaviour {
 
 
 		if (TasksDone == 1) {
-						SequenceText.GetComponent<Text> ().text = "Swipe your Card Up! Hit: " + sequence [0] + " To Swipe again!";
-				}
+			SequenceText.GetComponent<Text> ().text = "Swipe your Card Up! Hit: " + sequence [0] + " To Swipe again!";
+		}
 		if (TasksDone == 2) {
 			SequenceText.GetComponent<Text>().text="Flip your card Dummy! Hit: " + "Spacebar" + " To flip!";
 		}
