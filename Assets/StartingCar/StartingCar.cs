@@ -7,6 +7,11 @@ public class StartingCar : MonoBehaviour {
 	public GameObject CompletedText;
 	public GameObject InsultText;
 	public GameObject Forever;
+	public GameObject KeyFull;
+	public GameObject Ignition;
+	public GameObject KeyHalf;
+	public GameObject SnoozeText;
+	public GameObject SnoozePanel;
 	string sequence = "j1h1g1";
 	float currenttime;
 	string slot1;
@@ -40,8 +45,9 @@ public class StartingCar : MonoBehaviour {
 	// Update is called once per frame
 	
 	void Update () 
-	{	if ((Time.time > currenttime)) {
+	{	if ((Time.time > currenttime)&&!Done) {
 			CompletedText.SetActive(false);
+			SnoozePanel.SetActive(false);
 			currenttime = 0;
 		}
 		bool skippy = false;
@@ -157,7 +163,12 @@ public class StartingCar : MonoBehaviour {
 		
 		if (TasksDone == 1) {
 			//Play key in ignition sound and start beeping
-			CompletedText.SetActive(true);
+			KeyFull.SetActive(false);
+			KeyHalf.SetActive(true);
+			LastHitKey = "";
+			CurrentKeyLocked = "";
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Ignition!";
 			currenttime=Time.time+2;
 			sequence = "u1i1k1m1n1h1";
 			
@@ -165,25 +176,46 @@ public class StartingCar : MonoBehaviour {
 		if (TasksDone == 2) {
 			//Key clangy sound
 			//stop beeping
-			CompletedText.SetActive(true);
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Car Troubles???";
 			currenttime=Time.time+2;
 			sequence = "g1h1j1";
 		}
 		if (TasksDone == 3) {
 			//start beeping
 			//Key insert key
-			CompletedText.SetActive(true);
+			LastHitKey = "";
+			CurrentKeyLocked = "";
+			KeyFull.SetActive(true);
+			KeyHalf.SetActive(false);
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Let's try this again";
+			currenttime=Time.time+2;
 			sequence="j1h1g1";
 		
-
-
 		}
 		if (TasksDone == 4) {
-			//Start car sound
+			//start beeping
+			//Key insert key
+			LastHitKey = "";
+			CurrentKeyLocked = "";
+			KeyFull.SetActive(true);
+			KeyHalf.SetActive(false);
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Turn That Key!";
+			sequence="u1i1k1m1n1h1 1";
+			currenttime=Time.time+2;
+			
+		}
 
-			sequence = "u1i1k1m1n1h1";
+		if (TasksDone == 5) {
+			//Start car sound
+			SnoozePanel.SetActive(true);
+			SnoozeText.GetComponent<Text>().text="Success!";
 			Debug.Log ("Task 4?");
 			//Start Car
+			currenttime=Time.time+5;
+			Done=true;
 		}
 		
 	}
