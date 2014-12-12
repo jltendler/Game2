@@ -52,10 +52,11 @@ public class AlarmClock : MonoBehaviour {
 	// Update is called once per frame
 	
 	void Update () 
-	{	if ((Time.time > currenttime) && currenttime != 0) {
+	{	if ((Time.time > currenttime) && !Done) {
 			SnoozeText.SetActive(false);
 			AlarmSound.enabled = true;
 			CompletedText.SetActive(true);
+			currenttime = 0;
 	}
 		if (Time.time > (currenttime + 2) && !AlarmOff) {
 			CompletedText.SetActive (false);
@@ -189,7 +190,7 @@ public class AlarmClock : MonoBehaviour {
 			
 		}
 		SequenceEdited = false;
-		if (Done) {
+		if (Done&&(currenttime<Time.time)) {
 			Debug.Log ("Safe to exit Scene.");
 			ForeverScript other=	Forever.GetComponent<ForeverScript>();
 			other.LoadScene("Alarm");
@@ -213,15 +214,11 @@ public class AlarmClock : MonoBehaviour {
 			CompletedText.SetActive(true);
 			AlarmSound.enabled = false;
 			AlarmOff = true;
-			currenttime=0;
-			sequence="x9";
-			Done=true;
+			currenttime= Time.time+3;
 		}
 		if (TasksDone == 4) {
 			Done = true;
-
 		}
-		
 	}
 	void ErrorCheck(){
 		if ((TimesErrored != PreviousTimesErrored)) {

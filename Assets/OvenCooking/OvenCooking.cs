@@ -14,6 +14,7 @@ public class OvenCooking : MonoBehaviour {
 	public GameObject OvenHalf;
 	public GameObject OvenClosed;
 	public GameObject Cookies;
+	public GameObject Forever;
 	string sequence = "p1";
 	float currenttime;
 	string slot1;
@@ -37,6 +38,8 @@ public class OvenCooking : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		//JACK COPY AND PASTE THE LINE BELOW.
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
@@ -200,6 +203,8 @@ public class OvenCooking : MonoBehaviour {
 		}
 		SequenceEdited = false;
 		if ((Done)&&(Time.time>currenttime)) {
+			ForeverScript other= Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Oven");
 			Debug.Log ("Safe to exit Scene.");
 			//Call to next scene.
 			
@@ -215,7 +220,7 @@ public class OvenCooking : MonoBehaviour {
 			OvenOffLight.SetActive(false);
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "317151s1";
+			sequence = "317151p1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Oven On!";
 			//SequenceText.GetComponent<Text>().text="Time for work! Hit: " + sequence[0] + " To Swipe Your Card!";
@@ -229,7 +234,7 @@ public class OvenCooking : MonoBehaviour {
 			OvenText.GetComponent<Text>().text="375";
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "t11151s1";
+			sequence = "t11151p1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Pre Heat!";
 			//SequenceText.GetComponent<Text>().text="Flip your card Dummy! Hit: " + "Spacebar" + " To flip!";
@@ -268,7 +273,7 @@ public class OvenCooking : MonoBehaviour {
 			
 		}
 		if (TasksDone == 6) {
-			currenttime=(Time.time+5);
+			currenttime=(Time.time+3);
 			Done=true;
 		}
 	}

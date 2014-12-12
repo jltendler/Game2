@@ -155,6 +155,8 @@ public class StartingCar : MonoBehaviour {
 		}
 		SequenceEdited = false;
 		if ((Done)&&(Time.time>currenttime)) {
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Car");
 			Debug.Log ("Safe to exit Scene."); 
 		}
 	}
@@ -214,7 +216,7 @@ public class StartingCar : MonoBehaviour {
 			SnoozeText.GetComponent<Text>().text="Drive Safe!";
 			Debug.Log ("Task 4?");
 			//Start Car
-			currenttime=Time.time+5;
+			currenttime=Time.time+3;
 			Done=true;
 		}
 		

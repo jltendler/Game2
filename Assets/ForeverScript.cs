@@ -11,10 +11,12 @@ public class ForeverScript : MonoBehaviour {
 	public GameObject PauseCanvas;
 	public GameObject PauseText;
 	public bool paused=false;
+	public float starttime = 0;
+	public bool firstpress=true;
 	// Use this for initialization
 	void Start () {
 	
-		scenes = new List<int>(Enumerable.Range(1,9));
+		scenes = new List<int>(Enumerable.Range(1,11));
 	}
 	void Awake(){
 		DontDestroyOnLoad (this);
@@ -55,9 +57,19 @@ public class ForeverScript : MonoBehaviour {
 						shuffled = false;
 				}
 		}
+
+	public void ExitGame(){
+		Application.Quit ();
+		}
 	public void LoadScene(string SceneName){
+
+		if (firstpress) {
+						starttime = Time.time;
+			firstpress=false;
+				}
 		if (shuffled) {
 			if(scenes.Count==0){
+				Application.LoadLevel(12);
 				Debug.Log("GAME OVER DUDE.");
 			}
 			else{
@@ -70,7 +82,7 @@ public class ForeverScript : MonoBehaviour {
 			shuffled = true;
 
 			Debug.Log ("Shuffler has chosen: " + level);
-			//Application.LoadLevel(level);
+			Application.LoadLevel(level);
 
 			}
 				
@@ -109,6 +121,19 @@ public class ForeverScript : MonoBehaviour {
 			if(SceneName=="Oven"){
 				Application.LoadLevel(9);
 			}
+			if(SceneName=="TV"){
+				Application.LoadLevel(10);
+			}
+			if(SceneName=="PMB"){
+				Application.LoadLevel(11);
+			}
+			if(SceneName=="PMA"){
+				Application.LoadLevel (12);
+			}
+			if(SceneName=="GameOver"){
+				Application.LoadLevel (0);
+			}
+			}
 				}
 	}
-}
+

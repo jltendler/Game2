@@ -172,6 +172,8 @@ public class ComputerPower : MonoBehaviour {
 		}
 		SequenceEdited = false;
 		if ((Done)&&(Time.time>currenttime)) {
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Computer");
 			Debug.Log ("Safe to exit Scene.");
 			//Call to next scene.
 			
@@ -226,7 +228,7 @@ public class ComputerPower : MonoBehaviour {
 			
 		}
 		if (TasksDone == 5) {
-			currenttime=(Time.time+5);
+			currenttime=(Time.time+3);
 			Done=true;
 		}
 	}

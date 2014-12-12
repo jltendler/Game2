@@ -57,6 +57,7 @@ public class BrushTeeth : MonoBehaviour {
 			currenttime = 0;
 		}
 
+
 		if (TasksDone == 1) {
 			SequenceText.GetComponent<Text> ().text = "Keep Brushing! Still gross! Hit: " + prettyname + " To Brush!";
 		}
@@ -195,8 +196,10 @@ public class BrushTeeth : MonoBehaviour {
 			
 		}
 		SequenceEdited = false;
-		if (Done) {
+		if (Done&&(currenttime<Time.time)) {
 			Debug.Log ("Safe to exit Scene.");
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Brush");
 		}
 	}
 	
@@ -228,9 +231,10 @@ public class BrushTeeth : MonoBehaviour {
 		if (TasksDone == 5) {
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text = "Squeaky Clean!";
-			sequence="";
-			currenttime = Time.time+5;
+			sequence=" 0";
+			currenttime = Time.time+3;
 			Done=true;
+
 		}
 		
 	}

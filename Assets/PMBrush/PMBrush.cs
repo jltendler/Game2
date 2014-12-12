@@ -37,9 +37,10 @@ public class PMBrush : MonoBehaviour {
 	TextureChanger scriptyscript;
 	//	string ktest="K";
 	// Use this for initialization
-	void Start () {
-		duude=150f; dude=-150;
+	void Start () {	
+		//JACK COPY AND PASTE THE LINE BELOW.
 		Forever = GameObject.Find ("Forever");
+		duude=150f; dude=-150;
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
@@ -195,7 +196,9 @@ public class PMBrush : MonoBehaviour {
 			
 		}
 		SequenceEdited = false;
-		if (Done) {
+		if (Done&&(currenttime<Time.time)) {
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("PMB");
 			Debug.Log ("Safe to exit Scene.");
 		}
 	}
@@ -229,7 +232,7 @@ public class PMBrush : MonoBehaviour {
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text = "Bed Time!";
 			sequence="";
-			currenttime = Time.time+5;
+			currenttime = Time.time+3;
 			Done=true;
 		}
 		

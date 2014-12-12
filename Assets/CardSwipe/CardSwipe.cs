@@ -11,7 +11,7 @@ public class CardSwipe : MonoBehaviour {
 	public GameObject SnoozePanel;
 	public GameObject CardWrong;
 	public GameObject CardRight;
-	string sequence = "t1g1v1";
+	string sequence = "t1g1b1";
 	float currenttime;
 	string slot1;
 	string slot2;
@@ -56,7 +56,7 @@ public class CardSwipe : MonoBehaviour {
 		} else if ((TasksDone == 3) && (Input.GetKeyUp (KeyCode.G))) {
 			CardRight.transform.position = CardRight.transform.position - new Vector3 (0,50,0);
 		}
-		else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.V))) {
+		else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.B))) {
 			CardRight.transform.position = CardRight.transform.position - new Vector3 (0,50,0);
 		}
 		else if ((TasksDone == 4) && (Input.GetKeyUp (KeyCode.G))) {
@@ -189,7 +189,10 @@ public class CardSwipe : MonoBehaviour {
 		}
 		SequenceEdited = false;
 		if ((Done)&&(Time.time>currenttime)) {
+
 			Debug.Log ("Safe to exit Scene.");
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Card");
 			//Call to next scene.
 			
 		}
@@ -202,7 +205,7 @@ public class CardSwipe : MonoBehaviour {
 			CardWrong.transform.position = CardWrong.transform.position - new Vector3 (0,142,0);
 			LastHitKey = "";
 			CurrentKeyLocked = "";
-			sequence = "v1g1t1";
+			sequence = "b1g1t1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Swiped down!";
 			//SequenceText.GetComponent<Text>().text="Time for work! Hit: " + sequence[0] + " To Swipe Your Card!";
@@ -226,7 +229,7 @@ public class CardSwipe : MonoBehaviour {
 			//Swipe Again
 			CardWrong.SetActive(false);
 			CardRight.SetActive(true);
-			sequence = "t1g1v1";
+			sequence = "t1g1b1";
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="Card Flipped!";
 			//SequenceText.GetComponent<Text>().text="Swipe your card again! Hit: " + sequence[0] + " To Clock In!";
@@ -247,7 +250,7 @@ public class CardSwipe : MonoBehaviour {
 			
 		}
 		if (TasksDone == 5) {
-			currenttime=(Time.time+5);
+			currenttime=(Time.time+3);
 			Done=true;
 		}
 	}

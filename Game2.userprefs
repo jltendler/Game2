@@ -1,13 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ResetAlarmClock/ResetAlarmClock.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ForeverScript.cs">
     <Files>
-      <File FileName="Assets/PMBrush/PMBrush.cs" Line="230" Column="52" />
-      <File FileName="Assets/TypingTest/Script/BrushTeeth.cs" Line="14" Column="31" />
-      <File FileName="Assets/AlarmClock/AlarmClock.cs" Line="194" Column="25" />
-      <File FileName="Assets/TypingTest/Script/EggPan.cs" Line="208" Column="4" />
-      <File FileName="Assets/StartingCar/StartingCar.cs" Line="203" Column="26" />
-      <File FileName="Assets/ResetAlarmClock/ResetAlarmClock.cs" Line="188" Column="53" />
+      <File FileName="Assets\GameOver.cs" Line="14" Column="2" />
+      <File FileName="Assets\PMBrush\PMBrush.cs" Line="203" Column="4" />
+      <File FileName="Assets\TypingTest\Script\EggPan.cs" Line="185" Column="36" />
+      <File FileName="Assets\ResetAlarmClock\ResetAlarmClock.cs" Line="228" Column="27" />
+      <File FileName="Assets\ForeverScript.cs" Line="65" Column="3" />
+      <File FileName="Assets\OvenCooking\OvenCooking.cs" Line="223" Column="23" />
+      <File FileName="Assets\TVScene\TVScene.cs" Line="263" Column="28" />
+      <File FileName="Assets\TypingTest\Script\BrushTeeth.cs" Line="199" Column="36" />
+      <File FileName="Assets\StartingCar\StartingCar.cs" Line="219" Column="27" />
+      <File FileName="Assets\CardSwipe\CardSwipe.cs" Line="59" Column="58" />
+      <File FileName="Assets\AlarmClock\AlarmClock.cs" Line="193" Column="36" />
+      <File FileName="Assets\Radio\Radio.cs" Line="294" Column="28" />
+      <File FileName="Assets\ComputerPower\ComputerPower.cs" Line="231" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

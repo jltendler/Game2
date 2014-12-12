@@ -12,6 +12,7 @@ public class ResetAlarmClock : MonoBehaviour {
 	public GameObject AlarmClock7;
 	public GameObject AlarmClock71;
 	public GameObject AlarmClock715;
+	public GameObject Forever;
 	string sequence = "a1";
 	float currenttime;
 	string slot1;
@@ -35,6 +36,8 @@ public class ResetAlarmClock : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		//JACK COPY AND PASTE THE LINE BELOW.
+		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
@@ -172,6 +175,8 @@ public class ResetAlarmClock : MonoBehaviour {
 		}
 		SequenceEdited = false;
 		if ((Done)&&(Time.time>currenttime)) {
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("PMA");
 			Debug.Log ("Safe to exit Scene.");
 			//Call to next scene.
 			
@@ -220,7 +225,7 @@ public class ResetAlarmClock : MonoBehaviour {
 		if (TasksDone == 5) {
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text="See You Tomorrow!";
-			currenttime=Time.time+5;
+			currenttime=Time.time+3;
 			Done=true;
 		}
 	}

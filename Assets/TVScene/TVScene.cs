@@ -12,6 +12,7 @@ public class TVScene : MonoBehaviour {
 	public Texture2D Channel1;
 	public Texture2D Channel2;
 	public Texture2D Channel3;
+	public GameObject Forever;
 	string sequence = " 1";
 	float currenttime;
 	string slot1;
@@ -36,8 +37,9 @@ public class TVScene : MonoBehaviour {
 	public Color RandomBW;
 	// Use this for initialization
 	void Start () {
+		//JACK COPY AND PASTE THE LINE BELOW.
+		Forever = GameObject.Find ("Forever");
 		int counterbw = 0;
-
 		LastHitKey = "";
 		CurrentKey = "";
 		CurrentKeyLocked = "";
@@ -192,6 +194,8 @@ public class TVScene : MonoBehaviour {
 		}
 		SequenceEdited = false;
 		if ((Done)&&(Time.time>currenttime)) {
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("TV");
 			Debug.Log ("Safe to exit Scene.");
 			//Call to next scene.
 			
@@ -256,7 +260,7 @@ public class TVScene : MonoBehaviour {
 			
 		}
 		if (TasksDone == 6) {
-			currenttime=(Time.time+5);
+			currenttime=(Time.time+3);
 			Done=true;
 		}
 	}

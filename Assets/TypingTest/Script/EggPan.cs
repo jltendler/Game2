@@ -37,6 +37,7 @@ public class EggPan : MonoBehaviour {
 	//	string ktest="K";
 	// Use this for initialization
 	void Start () {
+		//JACK COPY AND PASTE THE LINE BELOW.
 		Forever = GameObject.Find ("Forever");
 		LastHitKey = "";
 		CurrentKey = "";
@@ -181,9 +182,11 @@ public class EggPan : MonoBehaviour {
 			
 		}
 		SequenceEdited = false;
-		if (Done) {
+		if (Done&&(currenttime<Time.time)) {
 			Debug.Log ("Safe to exit Scene.");
-				}
+			ForeverScript other=	Forever.GetComponent<ForeverScript>();
+			other.LoadScene("Egg");
+		}
 	}
 	
 	void TaskSwitcher(int TasksDone){
@@ -217,6 +220,7 @@ public class EggPan : MonoBehaviour {
 		if (TasksDone == 5) {
 			SnoozePanel.SetActive(true);
 			SnoozeText.GetComponent<Text>().text = "Breakfast!";
+			currenttime=Time.time+3;
 			Done = true;
 			Debug.Log ("TaskSwitcher() has decided you are done.");
 		}
